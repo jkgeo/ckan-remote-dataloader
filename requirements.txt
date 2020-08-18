@@ -1,4 +1,4 @@
 click
 simplejson
 messytables
-git+git://github.com/jkgeo/ckanapi.git@master#egg=ckanapi
+-e git+git://github.com/jkgeo/ckanapi.git@master#egg=ckanapi

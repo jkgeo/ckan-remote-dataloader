@@ -1,4 +1,5 @@
 import sys, os
+from pathlib import Path
 import click
 import configparser
 from .loader import connect, update_resource, new_resource
@@ -8,7 +9,7 @@ import logging
 logging.basicConfig(level=os.environ.get("LOGLEVEL","INFO"))
 log = logging.getLogger(__name__)
 
-configFile = os.path.join(os.path.abspath(os.path.join(os.path.expanduser('~/.config'),"ckanconfig.ini")))
+configFile = os.path.join(str(Path.home()),"ckanconfig.ini")
 
 @click.group()
 def main():
