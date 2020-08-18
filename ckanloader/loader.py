@@ -59,7 +59,7 @@ def parse_data(input):
     
     row_set.register_processor(messytables.headers_processor(headers))
     row_set.register_processor(messytables.offset_processor(offset + 1))
-    types = messytables.type_guess(row_set.sample, strict=True)
+    types = messytables.type_guess(row_set.sample, types=TYPES, strict=True)
     
     row_set.register_processor(messytables.types_processor(types))
 
@@ -108,7 +108,7 @@ def new_resource(ckan, input, package_id, name):
         ckan.action.datastore_create(resource_id=resource['id'], fields=headers, records=records, force=True)
 
     update_resource_details(ckan, resource['id'])
-    
+
     print('Successfully pushed {n} entries to "{res_id}".'.format(
         n=count, res_id=resource['id']))
     return

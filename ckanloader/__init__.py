@@ -42,7 +42,10 @@ def update(**kwargs):
         config.read(configFile)
         ckan_url = config['DEFAULT']['url']
         api_key = config['DEFAULT']['apikey']
-        ckan = connect(str(ckan_url), str(api_key))
+        try:
+            ckan = connect(str(ckan_url), str(api_key))
+        except KeyError:
+            log.error("Improper Configuration. Run `ckanloader configure` from the command line.")
         click.echo(kwargs)
         update_resource(ckan, kwargs.get("file"), kwargs.get("resource"))
     except KeyError:
@@ -62,11 +65,12 @@ def create(**kwargs):
         config.read(configFile)
         ckan_url = config['DEFAULT']['url']
         api_key = config['DEFAULT']['apikey']
-        ckan = connect(str(ckan_url), str(api_key))
+        try:
+            ckan = connect(str(ckan_url), str(api_key))
+        except KeyError:
+            log.error("Improper Configuration. Run `ckanloader configure` from the command line.")
         click.echo(kwargs)
         new_resource(ckan, kwargs.get("file"), kwargs.get("package"), kwargs.get("name"))
-    except KeyError:
-        log.error("Improper Configuration. Run `ckanloader configure` from the command line.")
     except FileNotFoundError:
         log.error("File not found, check file name and try again")
 
