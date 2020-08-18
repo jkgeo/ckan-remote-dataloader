@@ -22,7 +22,7 @@ dependency_links = [x.strip().replace('git+', '') for x in all_reqs \
 setup (
     name = 'ckan-remote-dataloader',
     description = 'A simple commandline app for uploading tables to a remote CKAN datastore',
-    version = '0.0.0',
+    version = '0.0.1',
     packages = find_packages(), 
     install_requires = install_requires,
     python_requires='>=3.6', 
