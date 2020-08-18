@@ -1,4 +1,5 @@
 click
 simplejson
 messytables
+python-magic-bin
 -e git+git://github.com/jkgeo/ckanapi.git@master#egg=ckanapi

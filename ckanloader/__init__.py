@@ -9,7 +9,7 @@ import logging
 logging.basicConfig(level=os.environ.get("LOGLEVEL","INFO"))
 log = logging.getLogger(__name__)
 
-configFile = "ckanconfig.ini"
+configFile = os.path.join(str(Path.home()),"ckanconfig.ini")
 
 @click.group()
 def main():
