@@ -36,7 +36,7 @@ setup (
     long_description_content_type="text/markdown",
     license='MIT',
     url='https://github.com/jkgeo/ckan-remote-dataloader',
-    # download_url='https://github.com/CITGuru/cver/archive/1.0.0.tar.gz',
+    download_url='https://github.com/jkgeo/ckan-remote-dataloader/archive/v0.0.0.tar.gz',
     dependency_links=dependency_links,
     author_email='jfkeniston@gmail.com',
     classifiers=[
