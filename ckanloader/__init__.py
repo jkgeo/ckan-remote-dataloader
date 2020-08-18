@@ -1,7 +1,7 @@
 import sys, os
 import click
 import configparser
-from loader import connect, update_resource, new_resource
+from .loader import connect, update_resource, new_resource
 
 ## set up logging
 import logging

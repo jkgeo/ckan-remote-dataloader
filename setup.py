@@ -25,7 +25,7 @@ setup (
     version = '0.0.0',
     packages = find_packages(), 
     install_requires = install_requires,
-    python_requires='>=3', 
+    python_requires='>=3.6', 
     entry_points='''
         [console_scripts]
         ckanloader=ckanloader.__init__:main
@@ -40,8 +40,8 @@ setup (
     dependency_links=dependency_links,
     author_email='jfkeniston@gmail.com',
     classifiers=[
-        "License :: OSI Approved :: MIT License",]
-        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
     ]
 )
