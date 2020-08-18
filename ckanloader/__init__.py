@@ -9,7 +9,7 @@ import logging
 logging.basicConfig(level=os.environ.get("LOGLEVEL","INFO"))
 log = logging.getLogger(__name__)
 
-configFile = os.path.join(str(Path.home()),"ckanconfig.ini")
+configFile = "ckanconfig.ini"
 
 @click.group()
 def main():
@@ -49,15 +49,14 @@ def update(**kwargs):
             log.error("Improper Configuration. Run `ckanloader configure` from the command line.")
         click.echo(kwargs)
         update_resource(ckan, kwargs.get("file"), kwargs.get("resource"))
-    except KeyError:
-        log.error("Improper Configuration. Run `ckanloader configure` from the command line.")
     except FileNotFoundError:
         log.error("File not found, check file name and try again")
 
 
 @main.command()
 @click.option('-f', '--file', type=str, required=True, help="Input File")
-@click.option('-p', '--package', type=str, required=True, help="Package ID (Dataset Name)")
+@click.option('-e', '--existing', is_flag=True, help="Create datastore for existing resource")
+@click.option('-p', '--package', type=str, required=True, help="Package ID (Dataset Name or Resource ID for existing resource)")
 @click.option('-n', '--name', type=str, required=False, help="Provide a name for the new resource")
 def create(**kwargs):
     """ Create a new resource in an existing dataset """
@@ -71,7 +70,7 @@ def create(**kwargs):
         except KeyError:
             log.error("Improper Configuration. Run `ckanloader configure` from the command line.")
         click.echo(kwargs)
-        new_resource(ckan, kwargs.get("file"), kwargs.get("package"), kwargs.get("name"))
+        new_resource(ckan, kwargs.get("existing"), kwargs.get("file"), kwargs.get("package"), kwargs.get("name"))
     except FileNotFoundError:
         log.error("File not found, check file name and try again")
 

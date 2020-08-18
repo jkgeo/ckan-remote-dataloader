@@ -98,8 +98,11 @@ def update_resource(ckan, input, resource_id):
         n=count, res_id=resource_id))
 
 
-def new_resource(ckan, input, package_id, name):
-    resource = ckan.action.resource_create(package_id=package_id, name=name)
+def new_resource(ckan, existing, input, package_id, name):
+    if existing:
+        resource = ckan.action.resource_show(id=package_id)
+    else:
+        resource = ckan.action.resource_create(package_id=package_id, name=name)
     headers, result = parse_data(input)
     count = 0
     for i, records in enumerate(chunky(result, 250)):

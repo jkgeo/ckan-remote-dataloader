@@ -130,3 +130,5 @@ dmypy.json
 
 # configuration file
 config.ini
+ckanconfig.ini
+*.csv
